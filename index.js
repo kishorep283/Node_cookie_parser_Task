@@ -255,21 +255,21 @@ let obj=[
   app.get("/products/like/:id",(req,res)=>{
     let reccomdata=req.cookies.likedcat?JSON.parse(req.cookies.likedcat):[];
     let prodid=req.params.id;
+    console.log(prodid)
     let filterdata = obj.filter((item)=>{
         return item.id==prodid;
     })
     reccomdata.push(filterdata[0].category);
-    res.cookie("likedcat",JSON.stringify(reccomdata),{maxage:900000,httpOnly:true});
+    res.cookie("likedcat",JSON.stringify(reccomdata),{maxage:900000,httpOnly:true,secure:false});
     res.send("lied the post");
 
   })
   app.get("/products",(req,res)=>{
     let data =req.cookies.likedcat ? JSON.parse(req.cookies.likedcat):[];
-    console.log(data);
     let reccom=obj.filter((item)=>{
         return data.includes(item.category);
     })
-    console.log(reccom);
+    // console.log(reccom);
     res.send({
         rec:reccom,
         data:obj
