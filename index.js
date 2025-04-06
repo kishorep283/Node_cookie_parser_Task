@@ -2,6 +2,8 @@ const express= require("express");
 let app =express();
 let cookie_parser=require("cookie-parser");
 app.use(cookie_parser());
+const cors =require("cors");
+app.use(cors())
 
 let obj=[
     {
