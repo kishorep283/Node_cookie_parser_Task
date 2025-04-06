@@ -261,7 +261,7 @@ let obj=[
 
   })
   app.get("/products",(req,res)=>{
-    let data =JSON.parse(req.cookies.likedcat);
+    let data =req.cookies.likedcat ? JSON.parse(req.cookies.likedcat):[];
     console.log(data);
     let reccom=obj.filter((item)=>{
         return data.includes(item.category);
