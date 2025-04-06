@@ -3,7 +3,10 @@ let app =express();
 let cookie_parser=require("cookie-parser");
 app.use(cookie_parser());
 const cors =require("cors");
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true
+}));
 
 let obj=[
     {
